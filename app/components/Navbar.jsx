@@ -45,7 +45,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/">Create Product</Link>
+            <Link href="/createProduct">Create Product</Link>
           </li>
         </ul>
       </div>

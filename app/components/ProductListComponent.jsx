@@ -1,35 +1,80 @@
 // components/ProductList.js
 import React from "react";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, onEdit, onDelete }) => {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Product List</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {products.map((product) => (
-          <div
-            key={product._id}
-            className="border rounded-lg shadow p-4 flex flex-col items-center"
-          >
-            <img
-              src={product.Img}
-              alt={product.ProductName}
-              className="w-full h-40 object-cover mb-4 rounded"
-            />
-            <h2 className="text-lg font-semibold">{product.ProductName}</h2>
-            <p className="text-gray-600">{product.ProductCode}</p>
-            <p className="text-gray-700 font-medium">
-              Price: ${product.UnitPrice}
-            </p>
-            <p className="text-gray-700 font-medium">Qty: {product.Qty}</p>
-            <p className="text-gray-800 font-semibold">
-              Total: ${product.TotalPrice}
-            </p>
-            <p className="text-gray-500 text-sm mt-2">
-              Created: {new Date(product.CreatedDate).toLocaleDateString()}
-            </p>
-          </div>
-        ))}
+      <h1 className="text-2xl font-bold mb-4">Product Dashboard</h1>
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full border-collapse border border-gray-300">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Image
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Name
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Code
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Price
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Quantity
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Total
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product._id} className="hover:bg-gray-100">
+                <td className="border border-gray-300 px-4 py-2">
+                  <img
+                    src={product.Img ? product.Img : null}
+                    alt={product.ProductName}
+                    className="w-16 h-16 object-cover rounded"
+                  />
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {product.ProductName}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {product.ProductCode}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  ${product.UnitPrice}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {product.Qty}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  ${product.TotalPrice}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <button
+                    onClick={() => onEdit(product)}
+                    className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 mr-2"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => onDelete(product._id)}
+                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
