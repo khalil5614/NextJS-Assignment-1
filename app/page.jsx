@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { getProducts, updateProduct, deleteProduct } from "./utils/api";
 import Link from "next/link";
@@ -46,8 +47,8 @@ export default function Page() {
   };
   return (
     <div className="container mx-auto p-4">
-      <div className="flex  justify-between m-4 align-middle">
-        <h1 className="text-2xl font-bold mb-4">Product Dashboard</h1>
+      <div className="flex  justify-between m-3 ">
+        <h1 className="text-2xl font-bold pt-3">Product Dashboard</h1>
 
         <Link className="btn btn-outline" href="/createProduct">
           <TbCategoryPlus />

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { createProduct } from "../utils/api";
+import { useRouter } from "next/navigation";
 
-//import { useRouter } from "next/router";
 const Page = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     ProductName: "",
     ProductCode: "",
@@ -40,7 +40,7 @@ const Page = () => {
       console.log(response);
       if (response.status == 200) {
         alert("Product created successfully!");
-        //    router.push("/dashboard"); // Redirect to the dashboard or product list
+        router.push("/");
       } else {
         setError("Failed to create product.");
       }

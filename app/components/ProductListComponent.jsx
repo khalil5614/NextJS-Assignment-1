@@ -3,7 +3,7 @@ import React from "react";
 
 const ProductList = ({ products, onEdit, onDelete }) => {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto px-4 pb-4">
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>
