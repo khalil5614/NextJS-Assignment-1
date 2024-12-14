@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { createProduct } from "../utils/api";
+
 //import { useRouter } from "next/router";
 const page = () => {
   // const router = useRouter();
@@ -27,15 +29,16 @@ const page = () => {
     }
 
     try {
-      const response = await fetch("/api/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
+      // const response = await fetch("/api/products", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
+      const response = await createProduct(formData);
+      console.log(response);
+      if (response.status == 200) {
         alert("Product created successfully!");
         //    router.push("/dashboard"); // Redirect to the dashboard or product list
       } else {

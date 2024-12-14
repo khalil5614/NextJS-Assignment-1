@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getProducts, deleteProduct } from "./utils/api";
+import { getProducts, updateProduct, deleteProduct } from "./utils/api";
 import Link from "next/link";
 import ProductList from "./components/ProductListComponent";
 import EditProductModal from "./components/EditProductModal";
@@ -24,29 +24,31 @@ export default function Home() {
     console.log("products", products);
   };
   const handleEdit = (product) => {
-    alert(`Edit product: ${product.ProductName}`);
+    // alert(`Edit product: ${product.ProductName}`);
     setSelectedProduct(product);
     setIsModalOpen(true);
     console.log("Selected Product", selectedProduct);
   };
-  const handleDelete = async (id) => {
+  const handleDelete = async (product) => {
     if (confirm("Are you sure you want to delete this product?")) {
-      await deleteProduct(id);
+      await deleteProduct(product);
       fetchProducts();
     }
   };
   const handleModalClose = () => {
     setIsModalOpen(false);
-    //    setSelectedProduct(null);
+    setSelectedProduct(null);
   };
-  const handleProductSave = (updatedProduct) => {
+  const handleProductSave = async (updatedProduct) => {
     console.log("Updated Product:", updatedProduct);
-    // Add logic to update product in state or send to server
+    await updateProduct(updatedProduct._id, updatedProduct);
+    fetchProducts();
   };
   return (
     <div className="container mx-auto p-4">
-      <div className="flex  justify-between m-2">
-        <h2 className="text-2xl font-bold mb-4">All Products</h2>
+      <div className="flex  justify-between m-4 align-middle">
+        <h1 className="text-2xl font-bold mb-4">Product Dashboard</h1>
+
         <Link className="btn btn-outline" href="/createProduct">
           <TbCategoryPlus />
           <span>Add Product</span>

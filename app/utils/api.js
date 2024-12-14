@@ -6,8 +6,24 @@ export const api = axios.create({
   baseURL: API_BASE_URL,
 });
 
-export const createProduct = (product) => api.post("/products", product);
+export const createProduct = (product) =>
+  api.post(
+    "/CreateProduct",
+
+    product,
+
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 export const getProducts = () => api.get("/ReadProduct");
 export const updateProduct = (id, product) =>
-  api.put(`/products/${id}`, product);
-export const deleteProduct = (id) => api.delete(`/products/${id}`);
+  api.post(`UpdateProduct/${id}`, product, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+export const deleteProduct = (product) =>
+  api.get(`DeleteProduct/${product._id}`);

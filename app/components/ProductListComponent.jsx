@@ -4,7 +4,6 @@ import React from "react";
 const ProductList = ({ products, onEdit, onDelete }) => {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Product Dashboard</h1>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>
@@ -65,7 +64,7 @@ const ProductList = ({ products, onEdit, onDelete }) => {
                     Edit
                   </button>
                   <button
-                    onClick={() => onDelete(product._id)}
+                    onClick={() => onDelete(product)}
                     className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
                   >
                     Delete
