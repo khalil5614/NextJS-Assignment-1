@@ -6,7 +6,7 @@ import ProductList from "./components/ProductListComponent";
 import EditProductModal from "./components/EditProductModal";
 import { TbCategoryPlus } from "react-icons/tb";
 
-export default function Home() {
+export default function Page() {
   const [products, setProducts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);

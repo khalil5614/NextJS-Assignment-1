@@ -4,7 +4,7 @@ import { useState } from "react";
 import { createProduct } from "../utils/api";
 
 //import { useRouter } from "next/router";
-const page = () => {
+const Page = () => {
   // const router = useRouter();
   const [formData, setFormData] = useState({
     ProductName: "",
@@ -136,4 +136,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
